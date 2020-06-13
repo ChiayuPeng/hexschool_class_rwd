@@ -12,12 +12,13 @@
 
 	<!-- css -->
 	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/all.min.css">
 </head>
 
 <body>
-	<nav>
+	<nav class="d-flex">
 		<h1 class="logo"><a href="javascript:void(0)"><img src="images/logo-new@2x.png" alt="Glasses-logo"></a></h1>
-		<ul>
+		<ul class="menu d-flex">
 			<li><a href="javascript:void(0)">系列鏡框</a></li>
 			<li><a href="javascript:void(0)">門市據點</a></li>
 			<li><a href="javascript:void(0)">部落格</a></li>
@@ -25,35 +26,40 @@
 		</ul>
 	</nav>
 	<header>
-		<h2><span>Promise-Desert 2020 早春系列</span>看得清，才能看得遠</h2>
+		<div class="container">
+			<h2><span>Promise-Desert 2020 早春系列</span>看得清，才能看得遠</h2>
+		</div>
 	</header>
 	<section class="professional">
-		<h3>用專業的心，做專業的事</h3>
-		<ul>
-			<li>
-				<img src="images/iconfinder_circle-dollar.svg" alt="單一價格">
-				<p>單一價格</p>
-				<p>無論任何度數皆不需追加費用即可擁有適合自己的薄型球面鏡片。</p>
-			</li>
-			<li>
-				<img src="images/iconfinder_clock.svg" alt="20分鐘即可取件">
-				<p>20 分鐘即可取件</p>
-				<p>為了您的寶貴時間著想，以豐 富專業知識與技術將結帳到交件的時間縮減至最快 20 分鐘即可完成。</p>
-			</li>
-			<li>
-				<img src="images/iconfinder_heart.svg" alt="安心售後服務">
-				<p>安心售後服務</p>
-				<p>我們提供長達 120 天的保固售後服務，不限會員資格皆享有免費深層保養及專業維修服務。</p>
-			</li>
-			<li>
-				<img src="images/iconfinder_glasses.svg" alt="關於鏡片">
-				<p>關於鏡片</p>
-				<p>使用世界知名頂級品牌，抗UV、防汙鍍膜薄型非球面鏡片。</p>
-			</li>
-		</ul>
+		<div class="container">
+			<h3>用專業的心，做專業的事</h3>
+			<ul class="d-flex">
+				<li class="item">
+					<img src="images/iconfinder_circle-dollar.svg" alt="單一價格">
+					<p class="tit-item">單一價格</p>
+					<p>無論任何度數皆不需追加費用即可擁有適合自己的薄型球面鏡片。</p>
+				</li>
+				<li class="item">
+					<img src="images/iconfinder_clock.svg" alt="20分鐘即可取件">
+					<p class="tit-item">20 分鐘即可取件</p>
+					<p>為了您的寶貴時間著想，以豐 富專業知識與技術將結帳到交件的時間縮減至最快 20 分鐘即可完成。</p>
+				</li>
+				<li class="item">
+					<img src="images/iconfinder_heart.svg" alt="安心售後服務">
+					<p class="tit-item">安心售後服務</p>
+					<p>我們提供長達 120 天的保固售後服務，不限會員資格皆享有免費深層保養及專業維修服務。</p>
+				</li>
+				<li class="item">
+					<img src="images/iconfinder_glasses.svg" alt="關於鏡片">
+					<p class="tit-item">關於鏡片</p>
+					<p>使用世界知名頂級品牌，抗UV、防汙鍍膜薄型非球面鏡片。</p>
+				</li>
+			</ul>
+		</div>
+
 	</section>
 	<section class="classic">
-		<h2>經典系列鏡框</h2>
+		<h3>經典系列鏡框</h3>
 		<ul>
 			<li>
 				<img src="images/optical@2x.png" alt="光學眼鏡">
@@ -76,7 +82,7 @@
 		</div>
 	</div>
 	<div class="customer">
-		<h2>顧客推薦</h2>
+		<h3>顧客推薦</h3>
 		<ul>
 			<li>
 				<img src="images/c-Jessy@2x.png" alt="顧客1">
@@ -101,7 +107,7 @@
 		</ul>
 	</div>
 	<div class="contact">
-		<h2>聯絡我們</h2>
+		<h3>聯絡我們</h3>
 		<p>我們相當重視您的意見，若您有任何疑問，可先參考「常見問題」，若仍有任何問題，請填妥以下資料，我們會在近期與您聯繫。</p>
 	</div>
 	<footer>
