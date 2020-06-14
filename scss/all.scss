@@ -1,21 +1,23 @@
 //共同
 $main-color:#AA0601;
 $main-drak-color:#650300;
+$light-bg:#AA06010D;
 
 body,
 html {
 	font-family: "Roboto", 'Noto Sans TC', sans-serif;
 	font-size: 16px;
+	line-height: 1.5;
 }
 
 a {
 	display: block;
 	text-decoration: none;
+}
 
-	img {
-		display: block;
-		width: 100%;
-	}
+img {
+	display: block;
+	width: 100%;
 }
 
 .d-flex {
@@ -23,15 +25,27 @@ a {
 }
 
 .container {
+	min-width: 1200px;
 	width: 1200px;
 	margin: 0 auto;
+
+	&.s-container {
+		min-width: 792px;
+		width: 792px;
+	}
 }
+
 
 h3 {
 	color: $main-drak-color;
 	font-size: 48px;
 	text-align: center;
-	margin-bottom: 64px;
+	margin-bottom: 60px;
+
+	&.dark {
+		color: #000;
+		margin-bottom: 24px;
+	}
 }
 
 nav {
@@ -83,8 +97,11 @@ header {
 section {
 	padding: 64px 0;
 
+	&.light-bg {
+		background-color: $light-bg;
+	}
+
 	&.professional {
-		background-color: #AA06010D;
 		text-align: center;
 		padding-bottom: 80px;
 
@@ -95,7 +112,7 @@ section {
 			img {
 				width: 100px;
 				height: 100px;
-				margin-bottom: 40px;
+				margin: 0 auto 40px;
 			}
 
 			p {
@@ -109,6 +126,199 @@ section {
 				text-align: center;
 				color: $main-drak-color;
 				margin-bottom: 4px;
+			}
+		}
+	}
+
+	&.classic {
+		ul {
+			li {
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+
+				img {
+					width: 792px;
+				}
+
+				p {
+					display: block;
+					margin: 0 auto;
+					color: $main-color;
+					font-size: 48px;
+					line-height: 1.5;
+					text-transform: uppercase;
+					font-weight: 600;
+					font-style: italic;
+				}
+
+				&+li {
+					margin-top: 32px;
+				}
+
+				&:nth-of-type(2) {
+					flex-direction: row-reverse;
+				}
+			}
+		}
+	}
+
+	&.co-branding {
+		background: url(/images/co-brand@2x.png) no-repeat center center;
+		background-size: cover;
+
+		.l-box {
+			width: 573px;
+			margin-right: 8px;
+		}
+
+		.r-box {
+			width: 958px;
+
+			.t-pic {
+				margin-bottom: 8px;
+			}
+		}
+	}
+
+	&.customer {
+		ul {
+			li {
+				width: 25%;
+
+				.txt-box {
+					padding: 16px;
+					border: 1px solid #DEE2E6;
+
+					p {
+						&.name {
+							font-weight: 500;
+						}
+
+						&.update {
+							color: #707070;
+						}
+
+						&+p {
+							margin-top: 16px;
+						}
+					}
+
+				}
+
+				&+li {
+					margin-left: 24px;
+				}
+			}
+		}
+	}
+
+	&.contact {
+		ul {
+			margin: 20px auto 42px;
+
+			li {
+				label {
+					display: block;
+				}
+
+				input {
+					font-family: "Roboto", 'Noto Sans TC', sans-serif;
+					padding: 16px 14px;
+					width: 100%;
+					background-color: #fbf2f2;
+					border: 1px solid #000;
+
+					&::placeholder {
+						opacity: .5;
+					}
+
+				}
+
+
+				&+li {
+					margin-top: 16px;
+				}
+			}
+		}
+
+		button {
+			display: block;
+			margin: 40px auto;
+			padding: 16px 48px;
+			border: 0;
+			background-color: #AA0601;
+			color: #fff;
+		}
+	}
+}
+
+footer {
+	background-color: $main-color;
+	color: #fff;
+	padding: 48px 0 36px;
+
+	.f-top {
+		padding-bottom: 24px;
+		border-bottom: 1px solid #fff;
+
+		.d-flex {
+			justify-content: space-between;
+
+			.list {
+				width: 50%;
+
+				.d-flex {
+					li {
+						a {
+							color: #fff;
+							display: block;
+						}
+					}
+				}
+			}
+
+			.social {
+				li {
+					margin-left: 32px;
+				}
+			}
+		}
+
+		p {
+			a {
+				font-size: 36px;
+				color: #fff;
+
+				i {
+					margin-right: 12px;
+				}
+			}
+		}
+	}
+
+	.f-bottom {
+		padding-top: 24px;
+		justify-content: space-between;
+
+		.l-item {
+			align-items: center;
+
+			img {
+				width: 80px;
+				margin-right: 38px;
+			}
+		}
+
+		.r-item {
+			li {
+				a {
+					color: #fff;
+				}
+
+				&+li {
+					margin-left: 62px;
+				}
 			}
 		}
 	}
