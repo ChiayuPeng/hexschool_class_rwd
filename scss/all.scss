@@ -1,7 +1,42 @@
 //共同
 $main-color:#AA0601;
-$main-drak-color:#650300;
+$main-dark-color:#650300;
 $light-bg:#AA06010D;
+
+//響應式
+@mixin desktop_below {
+	@media (min-width: 1024px) {
+		@content;
+	}
+}
+
+@mixin v-pad {
+	@media (max-width: 992px) {
+		@content;
+	}
+}
+
+@mixin pad {
+	@media (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: 568px) {
+		@content;
+	}
+}
+
+@mixin small_mobile {
+	@media (max-width: 320px) {
+		@content;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
 
 body,
 html {
@@ -25,19 +60,25 @@ img {
 }
 
 .container {
-	min-width: 1200px;
-	width: 1200px;
+	max-width: 1200px;
 	margin: 0 auto;
 
+	@include v-pad {
+		width: 90%;
+	}
+
 	&.s-container {
-		min-width: 792px;
-		width: 792px;
+		max-width: 792px;
+	}
+
+	&.b-container {
+		max-width: 1540px;
 	}
 }
 
 
 h3 {
-	color: $main-drak-color;
+	color: $main-dark-color;
 	font-size: 48px;
 	text-align: center;
 	margin-bottom: 60px;
@@ -45,6 +86,10 @@ h3 {
 	&.dark {
 		color: #000;
 		margin-bottom: 24px;
+	}
+
+	&.light {
+		color: #fff;
 	}
 }
 
@@ -54,6 +99,14 @@ nav {
 	padding: 0 88px;
 	justify-content: space-between;
 	align-items: center;
+
+	@include pad {
+		padding: 0 48px;
+	}
+
+	.hbg-icon {
+		display: none;
+	}
 
 	.logo {
 		width: 80px;
@@ -83,7 +136,7 @@ header {
 
 	h2 {
 		text-align: right;
-		color: $main-drak-color;
+		color: $main-dark-color;
 		font-size: 64px;
 		line-height: 1.5;
 
@@ -105,27 +158,39 @@ section {
 		text-align: center;
 		padding-bottom: 80px;
 
-		.item {
-			width: 25%;
-			padding: 0 37px;
+		ul {
+			flex-wrap: wrap;
 
-			img {
-				width: 100px;
-				height: 100px;
-				margin: 0 auto 40px;
-			}
+			.item {
+				width: 25%;
+				padding: 0 37px;
 
-			p {
-				font-size: 16px;
-				line-height: 1.5;
-				text-align: left;
-			}
+				@include pad {
+					width: 50%;
 
-			.tit-item {
-				font-size: 24px;
-				text-align: center;
-				color: $main-drak-color;
-				margin-bottom: 4px;
+					&:nth-child(1n+3) {
+						margin-top: 20px;
+					}
+				}
+
+				img {
+					width: 100px;
+					height: 100px;
+					margin: 0 auto 40px;
+				}
+
+				p {
+					font-size: 16px;
+					line-height: 1.5;
+					text-align: left;
+				}
+
+				.tit-item {
+					font-size: 24px;
+					text-align: center;
+					color: $main-dark-color;
+					margin-bottom: 4px;
+				}
 			}
 		}
 	}
@@ -136,9 +201,18 @@ section {
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: center;
+				position: relative;
+
+				@include pad {
+					flex-direction: row-reverse;
+				}
 
 				img {
 					width: 792px;
+
+					@include pad {
+						width: 70%;
+					}
 				}
 
 				p {
@@ -166,6 +240,7 @@ section {
 	&.co-branding {
 		background: url(/images/co-brand@2x.png) no-repeat center center;
 		background-size: cover;
+		padding-bottom: 30rem;
 
 		.l-box {
 			width: 573px;
@@ -178,10 +253,82 @@ section {
 			.t-pic {
 				margin-bottom: 8px;
 			}
+
+			.b-pic {
+				.b-l-block {
+					margin-right: 8px;
+				}
+
+				.b-r-block {
+					flex-direction: column;
+					align-items: flex-end;
+
+					.b-r-t {
+						margin-bottom: 8px;
+					}
+
+					.b-r-b {
+						position: relative;
+						width: 31.66%;
+						height: 100%;
+						left: -12.4%;
+						background: #f6c600;
+
+						.more-btn {
+							position: absolute;
+							top: 50%;
+							left: .8%;
+							transform: translateY(-50%);
+							padding-left: 10%;
+
+							a {
+								width: 129.6%;
+								font-size: 72px;
+								font-weight: 600;
+								color: $main-color;
+								background-color: #fff;
+								padding-left: 32px;
+
+								i {
+									font-size: 60px;
+									color: #000;
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+
+		.g-wrap {
+			justify-content: space-between;
+			margin-top: 60px;
+
+			.c-item {
+				width: 48%;
+				position: relative;
+
+				p {
+					position: absolute;
+					width: 100%;
+					top: 50%;
+					left: 50%;
+					color: $main-color;
+					text-align: center;
+					font-weight: 600;
+					font-size: 72px;
+					transform: translate(-50%, -50%);
+					margin: 0 auto;
+				}
+			}
 		}
 	}
 
 	&.customer {
+		margin-top: -400px;
+		padding-bottom: 80px;
+
 		ul {
 			li {
 				width: 25%;
@@ -243,15 +390,20 @@ section {
 		}
 
 		button {
+			font-family: "Roboto", 'Noto Sans TC', sans-serif;
 			display: block;
 			margin: 40px auto;
 			padding: 16px 48px;
 			border: 0;
 			background-color: #AA0601;
 			color: #fff;
+			font-size: 16px;
+			letter-spacing: 1px;
 		}
 	}
 }
+
+
 
 footer {
 	background-color: $main-color;
