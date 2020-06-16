@@ -5,7 +5,7 @@ $light-bg:#AA06010D;
 
 //響應式
 @mixin desktop_below {
-	@media (min-width: 1024px) {
+	@media (max-width: 1023px) {
 		@content;
 	}
 }
@@ -34,8 +34,15 @@ $light-bg:#AA06010D;
 	}
 }
 
+@mixin s-size {
+	@media (min-width: 1024px) {
+		@content;
+	}
+}
+
 * {
 	box-sizing: border-box;
+	transition: all .5s;
 }
 
 body,
@@ -43,6 +50,7 @@ html {
 	font-family: "Roboto", 'Noto Sans TC', sans-serif;
 	font-size: 16px;
 	line-height: 1.5;
+	overflow-x: hidden;
 }
 
 a {
@@ -63,6 +71,10 @@ img {
 	max-width: 1200px;
 	margin: 0 auto;
 
+	@include desktop_below {
+		width: 90%;
+	}
+
 	@include v-pad {
 		width: 90%;
 	}
@@ -73,6 +85,10 @@ img {
 
 	&.b-container {
 		max-width: 1540px;
+
+		@include s-size {
+			width: 90%;
+		}
 	}
 }
 
@@ -82,6 +98,15 @@ h3 {
 	font-size: 48px;
 	text-align: center;
 	margin-bottom: 60px;
+
+	@include v-pad {
+		font-size: 32px;
+		font-weight: 600;
+	}
+
+	@include mobile {
+		font-size: 24px;
+	}
 
 	&.dark {
 		color: #000;
@@ -99,33 +124,87 @@ nav {
 	padding: 0 88px;
 	justify-content: space-between;
 	align-items: center;
+	position: relative;
 
-	@include pad {
+	@include desktop_below {
 		padding: 0 48px;
+	}
+
+	@include mobile {
+		padding: 0 16px;
+		height: 50px;
+		justify-content: center;
 	}
 
 	.hbg-icon {
 		display: none;
+
+		@include mobile {
+			display: block;
+			color: #ffffff;
+			position: absolute;
+			left: 16px;
+		}
 	}
 
 	.logo {
 		width: 80px;
 		padding: 30px 0;
+
+		@include mobile {
+			width: 48px;
+			margin: 0 auto;
+			padding: 0;
+		}
 	}
 
-	.menu {
+	.dropdown {
+		@include mobile {
+			position: absolute;
+			display: block;
+			left: 0;
+			top: 100%;
+			width: 100%;
+			max-height: 0px;
+			transition: all .8s;
+			overflow: hidden;
+			z-index: 120;
+		}
+
 		li {
 
 			a {
 				color: #fff;
 				font-size: 1.25em;
 				font-weight: 300;
+
+				@include mobile {
+					display: block;
+					background: #AA0601;
+					color: #FFFFFF;
+					border-top: 1px solid #FFFFFF;
+					padding: 14px 0;
+					height: 60px;
+					text-decoration: none;
+					text-align: center;
+				}
 			}
 
 			&+li {
 				margin-left: 64px;
+
+				@include mobile {
+					margin-left: 0;
+				}
 			}
 		}
+
+		&.active {
+			@include mobile {
+				max-height: 240px;
+			}
+		}
+
 	}
 }
 
@@ -134,11 +213,23 @@ header {
 	background-size: cover;
 	padding: 345px 0;
 
+	@include mobile {
+		padding: 163px 0;
+	}
+
 	h2 {
 		text-align: right;
 		color: $main-dark-color;
 		font-size: 64px;
 		line-height: 1.5;
+
+		@include desktop_below {
+			font-size: 48px;
+		}
+
+		@include mobile {
+			font-size: 32px;
+		}
 
 		span {
 			font-size: 0.56em;
@@ -149,6 +240,10 @@ header {
 
 section {
 	padding: 64px 0;
+
+	@include desktop_below {
+		padding: 40px 0;
+	}
 
 	&.light-bg {
 		background-color: $light-bg;
@@ -165,11 +260,23 @@ section {
 				width: 25%;
 				padding: 0 37px;
 
-				@include pad {
+				@include desktop_below {
 					width: 50%;
 
 					&:nth-child(1n+3) {
 						margin-top: 20px;
+					}
+				}
+
+				@include mobile {
+					width: 100%;
+
+					&:nth-child(1n+3) {
+						margin-top: 0px;
+					}
+
+					&+.item {
+						margin-top: 28px;
 					}
 				}
 
@@ -203,15 +310,15 @@ section {
 				align-items: center;
 				position: relative;
 
-				@include pad {
-					flex-direction: row-reverse;
-				}
-
 				img {
 					width: 792px;
 
-					@include pad {
-						width: 70%;
+					@include desktop_below {
+						width: 65%;
+					}
+
+					@include mobile {
+						width: 100%;
 					}
 				}
 
@@ -224,14 +331,34 @@ section {
 					text-transform: uppercase;
 					font-weight: 600;
 					font-style: italic;
+
+					@include desktop_below {
+						font-size: 28px;
+					}
+
+					@include mobile {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						color: #fff;
+					}
 				}
 
 				&+li {
 					margin-top: 32px;
+
+					@include desktop_below {
+						margin-top: 8px;
+					}
 				}
 
 				&:nth-of-type(2) {
 					flex-direction: row-reverse;
+
+					@include desktop_below {
+						flex-direction: row;
+					}
 				}
 			}
 		}
@@ -263,6 +390,10 @@ section {
 					flex-direction: column;
 					align-items: flex-end;
 
+					@include mobile {
+						align-items: flex-start;
+					}
+
 					.b-r-t {
 						margin-bottom: 8px;
 					}
@@ -271,8 +402,12 @@ section {
 						position: relative;
 						width: 31.66%;
 						height: 100%;
-						left: -12.4%;
+						left: -10.1%;
 						background: #f6c600;
+
+						@include mobile {
+							left: 0;
+						}
 
 						.more-btn {
 							position: absolute;
@@ -282,16 +417,29 @@ section {
 							padding-left: 10%;
 
 							a {
-								width: 129.6%;
-								font-size: 72px;
+								width: 134.5%;
+								font-size: 4.5em;
 								font-weight: 600;
 								color: $main-color;
 								background-color: #fff;
 								padding-left: 32px;
 
+								@include desktop_below {
+									font-size: 2em;
+									padding-left: 15px;
+								}
+
+								@include mobile {
+									font-size: 26px;
+								}
+
 								i {
 									font-size: 60px;
 									color: #000;
+
+									@include desktop_below {
+										font-size: 0.8em;
+									}
 								}
 							}
 						}
@@ -309,7 +457,17 @@ section {
 				width: 48%;
 				position: relative;
 
-				p {
+				&::before {
+					position: absolute;
+					content: "";
+					display: block;
+					width: 100%;
+					height: 100%;
+					background-color: #fff;
+					opacity: .5;
+				}
+
+				.block_text {
 					position: absolute;
 					width: 100%;
 					top: 50%;
@@ -320,6 +478,10 @@ section {
 					font-size: 72px;
 					transform: translate(-50%, -50%);
 					margin: 0 auto;
+
+					@include pad {
+						font-size: 32px;
+					}
 				}
 			}
 		}
@@ -330,8 +492,30 @@ section {
 		padding-bottom: 80px;
 
 		ul {
+			flex-wrap: wrap;
+
 			li {
-				width: 25%;
+				width: 23.5%;
+
+				@include desktop_below {
+					width: 47.5%;
+
+					&:nth-child(2n+2) {
+						margin-left: 24px;
+					}
+
+					&:nth-child(1n+3) {
+						margin-top: 24px;
+					}
+				}
+
+				@include mobile {
+					width: 100%;
+
+					&:nth-child(2n+2) {
+						margin-left: 0;
+					}
+				}
 
 				.txt-box {
 					padding: 16px;
@@ -355,7 +539,17 @@ section {
 
 				&+li {
 					margin-left: 24px;
+
+					@include desktop_below {
+						margin-left: 0;
+					}
+
+					@include mobile {
+						margin-top: 16px;
+					}
 				}
+
+
 			}
 		}
 	}
@@ -417,8 +611,20 @@ footer {
 		.d-flex {
 			justify-content: space-between;
 
+			@include mobile {
+				justify-content: flex-end;
+			}
+
 			.list {
 				width: 50%;
+
+				@include v-pad {
+					margin-bottom: 24px;
+				}
+
+				@include mobile {
+					display: none;
+				}
 
 				.d-flex {
 					li {
@@ -433,6 +639,10 @@ footer {
 			.social {
 				li {
 					margin-left: 32px;
+
+					@include v-pad {
+						width: 24px;
+					}
 				}
 			}
 		}
@@ -441,6 +651,10 @@ footer {
 			a {
 				font-size: 36px;
 				color: #fff;
+
+				@include v-pad {
+					font-size: 20px;
+				}
 
 				i {
 					margin-right: 12px;
@@ -453,25 +667,50 @@ footer {
 		padding-top: 24px;
 		justify-content: space-between;
 
+		@include mobile {
+			flex-wrap: wrap;
+		}
+
 		.l-item {
 			align-items: center;
 
 			img {
 				width: 80px;
 				margin-right: 38px;
+
+				@include v-pad {
+					display: none;
+				}
 			}
 		}
 
 		.r-item {
-			li {
-				a {
-					color: #fff;
+			ul {
+				@include mobile {
+					flex-wrap: wrap;
+					flex-direction: column;
 				}
 
-				&+li {
-					margin-left: 62px;
+				li {
+					@include mobile {
+						margin-top: 8px;
+					}
+
+					a {
+						color: #fff;
+					}
+
+					&+li {
+						margin-left: 62px;
+
+						@include mobile {
+							margin-left: 0;
+						}
+					}
 				}
 			}
+
+
 		}
 	}
 }
