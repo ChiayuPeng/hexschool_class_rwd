@@ -161,6 +161,7 @@ footer {
 		.d-flex {
 			justify-content: space-between;
 
+
 			@include mobile {
 				justify-content: flex-end;
 			}
@@ -216,6 +217,7 @@ footer {
 	.f-bottom {
 		padding-top: 24px;
 		justify-content: space-between;
+		align-items: center;
 
 		@include mobile {
 			flex-wrap: wrap;

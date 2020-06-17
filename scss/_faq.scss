@@ -2,20 +2,70 @@ h4 {
 	color: #000;
 	font-size: 4em;
 	line-height: 1.25;
+
+	@include v-pad {
+		font-size: 48px;
+	}
+
+	@include mobile {
+		font-size: 28px;
+	}
+
+	.icon {
+		display: inline-block;
+		vertical-align: unset;
+		margin-left: 16px;
+		width: 58px;
+		height: 58px;
+
+		@include v-pad {
+			width: 44px;
+			height: 44px;
+		}
+
+		@include mobile {
+			width: 24px;
+			height: 24px;
+		}
+	}
 }
 
 .faq-bg {
 	background: url(../images/faq/faq-banner.png) no-repeat center center;
 	background-size: cover;
 	padding-top: 214px;
+
+	@include v-pad {
+		padding-top: 237px;
+	}
+
+	@include mobile {
+		padding-top: 103px;
+	}
 }
 
 .accordion-wrap {
-	padding: 88px 0;
+	padding: 88px 0 156px;
+
+	@include v-pad {
+		padding: 40px 0 104px;
+	}
+
+	@include mobile {
+		padding: 24px 0 56px;
+	}
 
 	.sub-txt {
 		font-size: 32px;
 		margin-bottom: 16px;
+
+		@include v-pad {
+			font-size: 28px;
+		}
+
+		@include mobile {
+			font-size: 20px;
+		}
 	}
 
 	.accordion {
@@ -23,6 +73,11 @@ h4 {
 			border: 1px solid #000;
 			padding: 22px 38px;
 			justify-content: space-between;
+			align-items: center;
+
+			@include mobile {
+				padding: 16px;
+			}
 
 			&+li {
 				border-top: 0
@@ -33,10 +88,18 @@ h4 {
 				font-weight: 500;
 				cursor: pointer;
 
+				@include v-pad {
+					font-size: 16px;
+				}
+
 			}
 
 			&:nth-child(even) {
 				background-color: #F2F2F2;
+
+				@include v-pad {
+					font-size: 14px;
+				}
 			}
 
 			img {
