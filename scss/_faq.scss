@@ -1,0 +1,48 @@
+h4 {
+	color: #000;
+	font-size: 4em;
+	line-height: 1.25;
+}
+
+.faq-bg {
+	background: url(../images/faq/faq-banner.png) no-repeat center center;
+	background-size: cover;
+	padding-top: 214px;
+}
+
+.accordion-wrap {
+	padding: 88px 0;
+
+	.sub-txt {
+		font-size: 32px;
+		margin-bottom: 16px;
+	}
+
+	.accordion {
+		li {
+			border: 1px solid #000;
+			padding: 22px 38px;
+			justify-content: space-between;
+
+			&+li {
+				border-top: 0
+			}
+
+			&:nth-child(odd) {
+				font-size: 20px;
+				font-weight: 500;
+				cursor: pointer;
+
+			}
+
+			&:nth-child(even) {
+				background-color: #F2F2F2;
+			}
+
+			img {
+				width: 30px;
+				height: 30px;
+			}
+		}
+	}
+}
